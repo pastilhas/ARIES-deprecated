@@ -68,3 +68,6 @@ crashlytics-build.properties
 /PackagesCopy/
 !/scripts/Packaging/NuGetRestoreProject.csproj
 
+
+.vsconfig
+/Packages/
