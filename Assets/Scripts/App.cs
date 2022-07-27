@@ -105,7 +105,6 @@ public class App : MonoBehaviour
     {
         gauge.SetGaugeConstraints();
         Gauges.Add(gauge);
-        Save();
     }
 
     public static void RemGauge(GaugeController gauge)

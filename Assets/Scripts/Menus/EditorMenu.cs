@@ -111,8 +111,6 @@ public class EditorMenu : MonoBehaviour
 
     public void CloseEditorMenu()
     {
-        App.Save();
-
         if (gauge != null)
         {
             //gauge.Title = tmpTitle;

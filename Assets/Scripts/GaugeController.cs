@@ -49,7 +49,22 @@ public class GaugeController : MonoBehaviour
         if (nextUpdate.HasValue && System.DateTime.UtcNow > nextUpdate.Value)
         {
             App.Log($"{name} frozen at {nextUpdate.Value:HH:mm:ss}");
-            nextUpdate = null;
+
+            GaugeController gc = App.HandMenu.CreateElement(Type);
+            gc.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            gc.transform.localScale = transform.localScale;
+            gc.Title = Title;
+            gc.Units = Units;
+            gc.Machine = Machine;
+            gc.Quantity = Quantity;
+            gc.Setpoint = Setpoint;
+            gc.Min = Min;
+            gc.Max = Max;
+            gc.Time = Time;
+
+            App.RemGauge(this);
+            Destroy(gameObject);
+            return;
         }
     }
 
@@ -63,7 +78,6 @@ public class GaugeController : MonoBehaviour
             TableParser stp = App.GetParser(Machine, Setpoint, true);
             if (stp != null)
             {
-                Debug.Log($"Setpoint {name}");
                 Max = float.Parse(stp.LastValue);
             }
 

@@ -71,7 +71,7 @@ public class TimeSeriesGraph : MonoBehaviour, IGraphElement
 
         IEnumerable<int> tmp1 = table.Timestamps.Select(x => DateTime.Parse(x)).Select(x => (int)(x.Subtract(firstDate)).TotalSeconds);
         IEnumerable<float> tmp2 = table.Values.Select(x => Mathf.Clamp(float.Parse(x), min, max));
-        Dictionary<int, float> dict = tmp1.Zip(tmp2, (k, v) => new { k, v }).Where(x => x.k >= 0 && x.k <= maxTime).ToDictionary(x => x.k, x => x.v);
+        Dictionary<int, float> dict = tmp1.Zip(tmp2, (k, v) => new { k, v }).Where(x => x.k >= 0 && x.k <= maxTime).GroupBy(x => x.k).Select(y => y.First()).ToDictionary(x => x.k, x => x.v);
 
         while (dict.Count > maxPoints)
         {
@@ -97,11 +97,11 @@ public class TimeSeriesGraph : MonoBehaviour, IGraphElement
         }
 
         xText[0].text = firstDate.ToString("HH:mm:ss");
-        xText[1].text = firstDate.AddSeconds(lastDate.Subtract(firstDate).TotalSeconds).ToString("HH:mm:ss");
+        xText[1].text = firstDate.AddSeconds(time * 30f).ToString("HH:mm:ss");
         xText[2].text = lastDate.ToString("HH:mm:ss");
 
         yText[0].text = min.ToString("0.00");
-        yText[1].text = ((max + min) / 2).ToString("0.00");
+        yText[1].text = ((max + min) / 2f).ToString("0.00");
         yText[2].text = max.ToString("0.00");
     }
 }

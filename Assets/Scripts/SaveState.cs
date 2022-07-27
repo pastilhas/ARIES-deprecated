@@ -62,7 +62,7 @@ public static class SaveState
         }
         catch (Exception ex)
         {
-            App.Log($"ERR {ex.Message}");
+            //App.Log($"ERR {ex.Message}");
         }
 
         try
@@ -71,7 +71,7 @@ public static class SaveState
         }
         catch (Exception ex)
         {
-            App.Log($"ERR {ex.Message}");
+            //App.Log($"ERR {ex.Message}");
         }
     }
 
@@ -104,7 +104,7 @@ public static class SaveState
             }
             catch (Exception ex)
             {
-                App.Log($"ERR {ex.Message}");
+                //App.Log($"ERR {ex.Message}");
                 Debug.LogException(ex);
             }
         }

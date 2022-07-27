@@ -20,7 +20,7 @@ public static class SqlRequester
         }
         else
         {
-            App.Log(www.error);
+            //App.Log(www.error);
         }
     }
 }
