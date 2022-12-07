@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/WLT-test.unity
+    path: Assets/Export/Scenes/Main.unity
     guid: ac74ec593ec0d604b81ac31b8c04da1a
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5bdd155e60483404e932de71ac35a00e, type: 2}
